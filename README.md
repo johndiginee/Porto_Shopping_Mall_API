@@ -49,6 +49,9 @@ Porto Shopping Mall API is an eCommerce store API that allows different software
  * Digital Ocean
  * DRF-YASG (API Documentation)
 
+## API Documentation
+
+
 ## Installation on local machine
 
 ```bash
@@ -80,4 +83,4 @@ python3 manage.py runserver
 John Diginee - [LinkedIn](https://www.linkedin.com/in/johndiginee/) / [X](http://x.com/johndiginee) / [Person Site](https://johndiginee.com)
 
 ## Acknowledgements
-[Holberton School](https://www.holbertonschool.com/) & [ALX Africa](https://www.alxafrica.com/) (Mentors, Staff and Students)
+[Holberton School](https://www.holbertonschool.com/), [ALX Africa](https://www.alxafrica.com/) (Mentors, Staff and Students) & [Mastercard Foundation](https://mastercardfdn.org/)
