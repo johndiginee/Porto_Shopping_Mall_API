@@ -46,3 +46,9 @@ urlpatterns = [
 
 handler404 = 'utils.error_views.handler404'
 handler500 = 'utils.error_views.handler500'
+
+admin.site.site_header = "Porto Shopping Mall API Admin"
+
+admin.site.site_title = "Porto Shopping Mall API Admin Portal"
+
+admin.site.index_title = "Welcome to Porto Shopping Mall API Portal"
