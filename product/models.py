@@ -13,6 +13,10 @@ class Category(models.TextChoices):
     FOOD = 'Food'
     HOME = 'Home'
     KITCHEN = 'Kitchen'
+    HEALTH = 'Health'
+    PHONES = 'Phones'
+    FASHION = 'Fashion'
+    GAMING = 'Gaming'
 
 class Product(models.Model):
     """Represent a Product.
