@@ -79,7 +79,27 @@ python3 manage.py migrate
 python3 manage.py runserver
 ```
 
-## Authors
+Create a .env file and set:
+```bash
+SECRET_KEY =
+DEBUG =
+
+AWS_ACCESS_KEY_ID =
+AWS_SECRET_ACCESS_KEY =
+AWS_STORAGE_BUCKET_NAME =
+AWS_S3_REGION_NAME =
+
+EMAIL_HOST = 
+EMAIL_HOST_USER = 
+EMAIL_HOST_PASSWORD =
+EMAIL_PORT = 
+
+STRIPE_PUBLIC_KEY =
+STRIPE_PRIVATE_KEY =
+STRIPE_WEBHOOK =
+```
+
+## Author
 John Diginee - [LinkedIn](https://www.linkedin.com/in/johndiginee/) / [X](http://x.com/johndiginee) / [Person Site](https://johndiginee.com)
 
 ## Acknowledgements
