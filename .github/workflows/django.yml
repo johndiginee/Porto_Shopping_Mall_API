@@ -23,12 +23,12 @@ jobs:
       - name: Lint with flake8
         run: |
           flake8 .
-      # - name: Run migrations
-      #   run: |
-      #     python manage.py migrate
-      - name: Runing the tests
+      - name: Run migrations
         run: |
-          python manage.py test
+          python manage.py migrate
+      # - name: Runing the tests
+      #   run: |
+      #     python manage.py test
   
 #   deploy:
 #     runs-on: ubuntu-latest
