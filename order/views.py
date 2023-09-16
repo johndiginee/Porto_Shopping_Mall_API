@@ -16,6 +16,7 @@ from rest_framework.pagination import PageNumberPagination
 from .models import Order, OrderItem
 import stripe
 from utils.helpers import get_current_host
+from decouple import config
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -130,7 +131,7 @@ def delete_order(request, pk):
 
 
 
-stripe.api_key = os.environ.get('STRIPE_PRIVATE_KEY')
+stripe.api_key = config('STRIPE_PRIVATE_KEY')
 
 
 @api_view(['POST'])
@@ -185,7 +186,7 @@ def create_checkout_session(request):
 @api_view(['POST'])
 def stripe_webhook(request):
     """stripe webhook"""
-    webhook_secret = os.environ.get('STRIPE_WEBHOOK_SECRET')
+    webhook_secret = config('STRIPE_WEBHOOK_SECRET')
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
