@@ -1,5 +1,3 @@
-from dataclasses import field
-from pyexpat import model
 from django_filters import rest_framework as filters
 from .models import Order
 

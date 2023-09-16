@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.response import Response
 from django.contrib.auth.models import User
@@ -32,11 +32,11 @@ def register(request):
                 password = make_password(data['password']),
             )
 
-            return Response({ 'details': 'User Registered' }, status=status.HTTP_201_CREATED)
+            return Response({'details': 'User Registered'}, status=status.HTTP_201_CREATED)
 
 
         else:
-            return Response({ 'error': 'User already exists' }, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'error': 'User already exists'}, status=status.HTTP_400_BAD_REQUEST)
 
     else:
         return Response(user.errors)
@@ -102,7 +102,7 @@ def forgot_password(request):
         [data['email']]
     )
 
-    return Response({ 'details': 'Password rest email sent to: {email}'.format(email=data['email']) })
+    return Response({'details': 'Password rest email sent to: {email}'.format(email=data['email'])})
 
 
 @api_view(['POST'])
@@ -113,11 +113,11 @@ def reset_password(request, token):
     user = get_object_or_404(User, profile__reset_password_token=token)
 
     if user.profile.reset_password_expire.replace(tzinfo=None) < datetime.now():
-        return Response({ 'error': 'Token in expired' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Token in expired'}, status=status.HTTP_400_BAD_REQUEST)
 
 
     if data['password'] != data['confirmPassword']:
-        return Response({ 'error': 'Passwords are not same' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Passwords are not same'}, status=status.HTTP_400_BAD_REQUEST)
 
     user.password = make_password(data['password'])
     user.profile.reset_password_token = ""
@@ -126,4 +126,4 @@ def reset_password(request, token):
     user.profile.save()
     user.save()
 
-    return Response({ 'details': 'Password reset successfully'})
+    return Response({'details': 'Password reset successfully'})

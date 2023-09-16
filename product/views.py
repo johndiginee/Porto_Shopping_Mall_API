@@ -1,4 +1,3 @@
-from itertools import product
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -46,7 +45,7 @@ def get_product(request, pk):
 
     serializer = ProductSerializer(product, many=False)
 
-    return Response({ "product": serializer.data })
+    return Response({"product": serializer.data})
 
 
 @api_view(['POST'])
@@ -63,7 +62,7 @@ def new_product(request):
 
         res = ProductSerializer(product, many=False)
 
-        return Response({ "product": res.data })
+        return Response({"product": res.data})
 
     else:
         return Response(serializer.errors)
@@ -95,7 +94,7 @@ def update_product(request, pk):
     product = get_object_or_404(Product, id=pk)
 
     if product.user != request.user:
-        return Response({ 'error': 'You cannot update this product' }, status=status.HTTP_403_FORBIDDEN)
+        return Response({'error': 'You cannot update this product'}, status=status.HTTP_403_FORBIDDEN)
 
     product.name = request.data['name']
     product.description = request.data['description']
@@ -109,7 +108,7 @@ def update_product(request, pk):
 
     serializer = ProductSerializer(product, many=False)
 
-    return Response({ "product": serializer.data })
+    return Response({"product": serializer.data})
 
 
 @api_view(['DELETE'])
@@ -119,16 +118,16 @@ def delete_product(request, pk):
     product = get_object_or_404(Product, id=pk)
 
     if product.user != request.user:
-        return Response({ 'error': 'You cannot delete this product' }, status=status.HTTP_403_FORBIDDEN)
+        return Response({'error': 'You cannot delete this product'}, status=status.HTTP_403_FORBIDDEN)
 
-    args = { "product": pk }
+    args = {"product": pk}
     images = ProductImages.objects.filter(**args)
     for i in images:
         i.delete()
 
     product.delete()
 
-    return Response({ 'details': 'Product deleted successfully.' }, status=status.HTTP_200_OK)
+    return Response({'details': 'Product deleted successfully.'}, status=status.HTTP_200_OK)
 
 
 @api_view(['POST'])
@@ -143,11 +142,11 @@ def create_review(request, pk):
 
 
     if data['rating'] <= 0 or data['rating'] > 5:
-        return Response({ 'error': 'Please select rating between 1-5' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Please select rating between 1-5'}, status=status.HTTP_400_BAD_REQUEST)
 
     elif review.exists():
 
-        new_review = { 'rating': data['rating'], 'comment': data['comment'] }
+        new_review = {'rating': data['rating'], 'comment': data['comment']}
         review.update(**new_review)
 
         rating = product.reviews.aggregate(avg_ratings=Avg('rating'))
@@ -155,7 +154,7 @@ def create_review(request, pk):
         product.ratings = rating['avg_ratings']
         product.save()
 
-        return Response({ 'detail': 'Your review updated successfully' })
+        return Response({'detail': 'Your review updated successfully'})
 
     else:
         Review.objects.create(
@@ -170,7 +169,7 @@ def create_review(request, pk):
         product.ratings = rating['avg_ratings']
         product.save()
 
-        return Response({ 'detail': 'Your review is live.' })
+        return Response({'detail': 'Your review is live.'})
 
 
 
@@ -196,7 +195,7 @@ def delete_review(request, pk):
         product.ratings = rating['avg_ratings']
         product.save()
 
-        return Response({ 'detail': 'Your review has been deleted' })
+        return Response({'detail': 'Your review has been deleted'})
 
     else:
-        return Response({ 'error': 'Review not found' }, status=status.HTTP_404_NOT_FOUND) 
+        return Response({'error': 'Review not found'}, status=status.HTTP_404_NOT_FOUND) 

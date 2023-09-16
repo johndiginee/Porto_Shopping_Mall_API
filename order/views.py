@@ -1,4 +1,3 @@
-import os
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
@@ -39,7 +38,7 @@ def get_orders(request):
         "count": count,
         "resPerPage": resPerPage,
         'orders': serializer.data
-        })
+    })
 
 
 @api_view(['GET'])
@@ -63,7 +62,7 @@ def new_order(request):
     order_items = data['orderItems']
 
     if order_items and len(order_items) == 0:
-        return Response({ 'error': 'No Order Items. Please add atleast one product' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'No Order Items. Please add atleast one product'}, status=status.HTTP_400_BAD_REQUEST)
 
     else:
 
@@ -163,7 +162,7 @@ def create_checkout_session(request):
                 'product_data' : {
                     'name': item['name'],
                     "images": [item['image']],
-                    "metadata": { "product_id": item['product'] }
+                    "metadata": {"product_id": item['product']}
                 },
                 'unit_amount': item['price'] * 100
             },
@@ -180,7 +179,7 @@ def create_checkout_session(request):
         cancel_url=YOUR_DOMAIN
     )
 
-    return Response({ 'session': session })
+    return Response({'session': session})
 
 
 @api_view(['POST'])
@@ -197,9 +196,9 @@ def stripe_webhook(request):
         )
 
     except ValueError as e:
-        return Response({ 'error': 'Invalid Payload' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid Payload'}, status=status.HTTP_400_BAD_REQUEST)
     except stripe.error.SignatureVerificationError as e:
-        return Response({ 'error': 'Invalid signature' }, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'Invalid signature'}, status=status.HTTP_400_BAD_REQUEST)
 
 
     if event['type'] == 'checkout.session.completed':
@@ -242,4 +241,4 @@ def stripe_webhook(request):
             product.save()
 
 
-        return Response({ 'details': 'Your payment was successful.' })
+        return Response({'details': 'Your payment was successful.'})

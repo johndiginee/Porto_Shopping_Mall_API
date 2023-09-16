@@ -1,5 +1,3 @@
-
-
 from rest_framework import serializers
 from .models import *
 
@@ -27,10 +25,10 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description', 'price', 'brand', 'ratings', 'category', 'stock', 'user', 'reviews', 'images')
 
         extra_kwargs = {
-            "name": { "required": True, 'allow_blank':False },
-            "description": { "required": True, 'allow_blank':False },
-            "brand": { "required": True, 'allow_blank':False },
-            "category": { "required": True, 'allow_blank':False },
+            "name": {"required": True, 'allow_blank':False},
+            "description": {"required": True, 'allow_blank':False},
+            "brand": {"required": True, 'allow_blank':False},
+            "category": {"required": True, 'allow_blank':False},
         }
 
     def get_reviews(self, obj):
