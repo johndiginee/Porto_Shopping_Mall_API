@@ -52,6 +52,7 @@ Porto Shopping Mall API is an eCommerce store API that allows different software
 
 ## API Documentation
 
+https://porto-shopping-mall-api-g7ogr.ondigitalocean.app/redoc/
 
 ## Installation on local machine
 
@@ -101,7 +102,7 @@ STRIPE_WEBHOOK =
 ```
 
 ## Author
-John Diginee - [LinkedIn](https://www.linkedin.com/in/johndiginee/) / [X](http://x.com/johndiginee) / [Person Site](https://johndiginee.com)
+John Diginee - [LinkedIn](https://www.linkedin.com/in/johndiginee/) / [X](http://x.com/johndiginee) / [Personal Site](https://johndiginee.com)
 
 ## Acknowledgements
 [Holberton School](https://www.holbertonschool.com/), [ALX Africa](https://www.alxafrica.com/) (Mentors, Staff and Students) & [Mastercard Foundation](https://mastercardfdn.org/)
