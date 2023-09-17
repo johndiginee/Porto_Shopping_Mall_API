@@ -25,12 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
-SECRET_KEY = config("SECRET_KEY")
+# SECRET_KEY = config("SECRET_KEY")
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG') == 'True'
 # DEBUG = True
-DEBUG = config("DEBUG")
+# DEBUG = config("DEBUG")
+DEBUG = str(os.getenv('DEBUG'))
 
 ALLOWED_HOSTS = ['*', 'localhost']
 
@@ -70,10 +72,10 @@ MIDDLEWARE = [
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 # EMAIL_BACKEND='django.core.mail.backends.console.EmailBackend'
 
-EMAIL_HOST=config('EMAIL_HOST')
-EMAIL_HOST_USER=config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT=config('EMAIL_PORT')
+EMAIL_HOST=str(os.getenv('EMAIL_HOST'))
+EMAIL_HOST_USER=str(os.getenv('EMAIL_HOST_USER'))
+EMAIL_HOST_PASSWORD=str(os.getenv('EMAIL_HOST_PASSWORD'))
+EMAIL_PORT=str(os.getenv('EMAIL_PORT'))
 EMAIL_USE_TLS: False
 EMAIL_USE_SSL: False
 
@@ -170,11 +172,11 @@ STATIC_ROOT = 'static'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 # Amazon S3 Configuration
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = str(os.getenv('AWS_ACCESS_KEY_ID'))
+AWS_SECRET_ACCESS_KEY = str(os.getenv('AWS_SECRET_ACCESS_KEY'))
+AWS_STORAGE_BUCKET_NAME = str(os.getenv('AWS_STORAGE_BUCKET_NAME'))
 AWS_S3_SIGNATURE_VERSION = 's3v4'
-AWS_S3_REGION_NAME = config('AWS_S3_REGION_NAME')
+AWS_S3_REGION_NAME = str(os.getenv('AWS_S3_REGION_NAME'))
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 AWS_S3_VERIFY = True
