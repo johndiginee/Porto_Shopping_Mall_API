@@ -48,6 +48,7 @@ Porto Shopping Mall API is an eCommerce store API that allows different software
  * Github Actions (Continuous Integration/Continuous Deployment)
  * Digital Ocean
  * DRF-YASG (API Documentation)
+ * Insomnia
 
 ## API Documentation
 
