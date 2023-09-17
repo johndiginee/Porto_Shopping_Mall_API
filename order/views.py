@@ -130,7 +130,7 @@ def delete_order(request, pk):
 
 
 
-stripe.api_key = config('STRIPE_PRIVATE_KEY')
+stripe.api_key = str(os.getenv('STRIPE_PRIVATE_KEY'))
 
 
 @api_view(['POST'])
@@ -185,7 +185,7 @@ def create_checkout_session(request):
 @api_view(['POST'])
 def stripe_webhook(request):
     """stripe webhook"""
-    webhook_secret = config('STRIPE_WEBHOOK_SECRET')
+    webhook_secret = str(os.getenv('STRIPE_WEBHOOK_SECRET'))
     payload = request.body
     sig_header = request.META['HTTP_STRIPE_SIGNATURE']
     event = None
