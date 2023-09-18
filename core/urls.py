@@ -26,7 +26,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title = "Porto Shopping Mall API", 
         default_version = "v1",
-        description = "Porto Shopping Mall API is an eCommerce store API that allows different software applications to communicate and interact with their platform. This documentation should guide you from the basics (authentication, request structure) to how customers should be using and ordering products (list of products, add to cart etc.).",
+        description = "Porto Shopping Mall API is an eCommerce store API that allows different software applications to communicate and interact with their platform. This documentation should guide you from the basics (authentication, request structure) to how you should be using the endpoints.",
         contact = openapi.Contact(email="johndbizz@gmail.com"),
         license = openapi.License(name="MIT License") 
         ),
