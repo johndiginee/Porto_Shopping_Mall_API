@@ -36,10 +36,10 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('product.urls')),
-    path('api/', include('account.urls')),
-    path('api/', include('order.urls')),
-    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/products/', include('product.urls')),
+    path('api/auth/', include('account.urls')),
+    path('api/orders/', include('order.urls')),
+    path('api/auth/login/', TokenObtainPairView.as_view()),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]
 
