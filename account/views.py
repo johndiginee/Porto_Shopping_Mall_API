@@ -92,7 +92,7 @@ def forgot_password(request):
 
     host = get_current_host(request)
 
-    link = "{host}api/reset_password/{token}".format(host=host, token=token)
+    link = "{host}api/auth/reset_password/{token}".format(host=host, token=token)
     body = "Your password reset link is: {link}".format(link=link)
 
     send_mail(
