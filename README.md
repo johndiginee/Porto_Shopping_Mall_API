@@ -56,6 +56,8 @@ Porto Shopping Mall API is an eCommerce store API that allows different software
 
 https://porto-shopping-mall-api-g7ogr.ondigitalocean.app/redoc/
 
+Test via Insomnia - https://github.com/johndiginee/Porto_Shopping_Mall_API/blob/master/Insomnia_2023-09-18.json
+
 ## Installation on local machine
 
 ```bash
