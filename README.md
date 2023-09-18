@@ -23,6 +23,8 @@ Porto Shopping Mall API is an eCommerce store API that allows different software
 * Update product
 * List all products
 * Get single product
+* Search products
+* Filter products
 
 ### Order
 * Create order
